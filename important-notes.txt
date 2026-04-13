@@ -1,0 +1,43 @@
+
+
+find method 
+
+return an array [] 
+
+if found objects then array of objects are retured and if nothing is found then empty array is retured
+
+[{} , {} , {} , {}]  ,  []
+
+
+we can also give conditions inside the find method , it will return all the objects that fulfill the condition in an array
+even if only one object fulfill the condition then also it will be inside an array
+
+
+
+findOne method 
+
+it returns the object {} and not an array
+
+
+findOne() --> if we pass no conditions inside this method so it will return only first object it gets inside the DB
+
+findOne() --> if we pass any condition then it return the first object that fulfills the condition. 
+
+
+
+findOneAndDelete method 
+
+as name suggests it will find the first obejct fulfilling the condition and delete it 
+
+
+
+
+findOneAndUpdate method 
+
+
+as goes here as well , the only difference is it accepts 2 objects as arguement.   
+
+findOneAndUpdate( {} , {} ). where first arguement is the condition on which we need to find the object and 2nd object is the updated 
+value that we need to put at that specific object.
+
+
