@@ -11,10 +11,11 @@ const app = express();
 app.use(express.json());
 
 
-// create post 
+
 
 const upload = multer({ storage : multer.memoryStorage() });     // using multer to read the data coming inside the form-data
 
+// create post 
 app.post("/create-post" , upload.single("image") , async(req , res) =>{
 
     console.log(req.body); 
@@ -36,5 +37,22 @@ app.post("/create-post" , upload.single("image") , async(req , res) =>{
         console.error('Upload failed:', error);
     }
 });
+
+// get all posts 
+
+
+app.get("/get-post" , async(req , res) =>{
+
+    try {
+        const allPosts = await post.find();
+
+        res.status(200).json({allPosts});
+
+    } catch (error) {
+        console.log("error is",error.messaage);
+    }
+
+});
+
 
 module.exports = app;
