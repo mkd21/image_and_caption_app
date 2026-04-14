@@ -13,7 +13,8 @@ app.use(express.json());
 
 // create post 
 
-const upload = multer({ storage : multer.memoryStorage() });
+const upload = multer({ storage : multer.memoryStorage() });     // using multer to read the data coming inside the form-data
+
 app.post("/create-post" , upload.single("image") , async(req , res) =>{
 
     console.log(req.body); 
@@ -23,6 +24,12 @@ app.post("/create-post" , upload.single("image") , async(req , res) =>{
     {
         const result = await uploadToImageKit(req.file.buffer , req.file.originalname);
         console.log(result);
+        const createdPost = await post.create({
+            image : result.url,
+            caption : req.body.caption
+        });
+
+        res.status(201).json({ messaage : "post created successfully" , createdPost });
     }
     catch(error)
     {
