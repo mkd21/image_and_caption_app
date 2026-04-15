@@ -6,8 +6,11 @@ const post = require("./models/notes.model");
 const multer = require("multer");
 const uploadToImageKit = require("./services/storage.service");
 
+const cors = require("cors");
 
 const app = express();
+
+app.use(cors());
 app.use(express.json());
 
 
@@ -38,15 +41,15 @@ app.post("/create-post" , upload.single("image") , async(req , res) =>{
     }
 });
 
-// get all posts 
 
+// get all posts 
 
 app.get("/get-post" , async(req , res) =>{
 
     try {
         const allPosts = await post.find();
 
-        res.status(200).json({allPosts});
+        res.status(200).json(allPosts);
 
     } catch (error) {
         console.log("error is",error.messaage);
