@@ -33,7 +33,7 @@ app.post("/create-post" , upload.single("image") , async(req , res) =>{
             caption : req.body.caption
         });
 
-        res.status(201).json({ messaage : "post created successfully" , createdPost });
+        res.status(201).json({ message : "post created successfully" , createdPost });
     }
     catch(error)
     {
