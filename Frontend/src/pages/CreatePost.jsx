@@ -1,10 +1,30 @@
 
+import axios from "axios";
 
 function CreatePost()
 {
+    async function handleSubmit(e){
+
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+
+        try {
+            const {data : response} = await axios.post("http://localhost:3000/create-post" , formData);
+            console.log(response);
+
+        } catch (error) {
+            console.log("some error occured",error.message);
+        }
+
+
+        console.log(formData);
+    }
+
     return(
     <section className="min-h-screen flex items-center justify-center px-4">
-        <form className="w-full max-w-md bg-white shadow-2xl rounded-2xl p-6 space-y-5">
+
+        <form className="w-full max-w-md bg-white shadow-2xl rounded-2xl p-6 space-y-5" onSubmit={handleSubmit} >
             
             <h2 className="text-2xl font-semibold text-gray-800 text-center">Create Post</h2>
 
